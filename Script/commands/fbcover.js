@@ -9,9 +9,9 @@ const baseApiUrl = async () => {
 
 module.exports.config = {
  name: "fbcover",
- version: "6.9",
+ version: "2.9.2",
  hasPermssion: 0,
- credits: "Dipto",
+ credits: "rX",
  description: "Facebook cover",
  usePrefix: true,
  prefix: true,
@@ -45,7 +45,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
  const phone = msg[5].trim() || " ";
  const color = msg[6].trim() || "white";
  api.sendMessage(
- `Processing your cover,Wait koro baby < 😘`,
+ `> 🎀 𝐩𝐥𝐞𝐚𝐬𝐞 𝐰𝐚𝐢𝐭 `,
  event.threadID,
  (err, info) =>
  setTimeout(() => {
@@ -59,8 +59,20 @@ module.exports.run = async function ({ api, event, args, Users }) {
  const attachment = response.data;
  api.sendMessage(
  {
- body: `✿━━━━━━━━━━━━━━━━━━━━━━━━━━━✿\n🔵𝗙𝗜𝗥𝗦𝗧 𝗡𝗔𝗠𝗘: ${name}\n⚫𝗦𝗘𝗖𝗢𝗡𝗗 𝗡𝗔𝗠𝗘:${subname}\n⚪𝗔𝗗𝗗𝗥𝗘𝗦𝗦: ${address}\n📫𝗠𝗔𝗜𝗟: ${email}\n☎️𝗣𝗛𝗢𝗡𝗘 𝗡𝗢.: ${phone}\n☢️𝗖𝗢𝗟𝗢𝗥: ${color}\n💁𝗨𝗦𝗘𝗥 𝗡𝗔𝗠𝗘: ${nam}\n✅𝗩𝗲𝗿𝘀𝗶𝗼𝗻 : ${v}\n✿━━━━━━━━━━━━━━━━━━━━━━━━━━━✿`,
- attachment,
+ body: `
+— — — USER DETAILS — — —
+
+• Name        : ${name} ${subname}
+• Address     : ${address}
+• Email       : ${email}
+• Phone       : ${phone}
+• Color       : ${color}
+• Username    : ${nam}
+• Version     : ${v}
+
+— — — — — — — — — —
+`,
+attachment
  },
  event.threadID,
  event.messageID,
