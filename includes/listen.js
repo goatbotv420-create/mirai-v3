@@ -16,7 +16,7 @@ module.exports = function ({ api, models }) {
   var day = moment.tz("Asia/Ho_Chi_Minh").day();
   const checkttDataPath = __dirname + '/../modules/commands/tt/';
   setInterval(async() => {
-    const day_now = moment.tz("Asia/Ho_Chi_Minh").day();
+    const day_now = moment.tz("Asia/Dhaka").day();
     if (day != day_now) {
       day = day_now;
       const checkttData = fs.readdirSync(checkttDataPath);
@@ -40,7 +40,7 @@ module.exports = function ({ api, models }) {
                 return a.name.localeCompare(b.name);
             }
         });
-   const timechecktt = moment.tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY || HH:mm:ss'); 
+   const timechecktt = moment.tz('Asia/Dhaka').format('DD/MM/YYYY || HH:mm:ss'); 
     const haha = `\n────────────────────\n💬 Tổng tin nhắn: ${storage.reduce((a, b) => a + b.count, 0)}\n⏰ Time: ${timechecktt}\n✏️ Các bạn khác cố gắng tương tác nếu muốn lên top nha`;    
         let checkttBody = '[ TOP TƯƠNG TÁC NGÀY ]\n────────────────────\n📝 Top 10 người tương tác nhiều nhất hôm qua:\n\n';
         checkttBody += storage.slice(0, 10).map(item => {
@@ -76,9 +76,9 @@ module.exports = function ({ api, models }) {
                   return a.name.localeCompare(b.name);
               }
           });
-    const tctt = moment.tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY || HH:mm:ss');
-      const dzvcl = `\n────────────────────\n⏰ Time: ${tctt}\n✏️ Các bạn khác cố gắng tương tác nếu muốn lên top nha`;    
-          let checkttBody = '[ TOP TƯƠNG TÁC TUẦN ]\n────────────────────\n📝 Top 10 người tương tác nhiều nhất tuần qua:\n\n';
+    const tctt = moment.tz('Asia/Dhaka').format('DD/MM/YYYY || HH:mm:ss');
+      const dzvcl = `\n────────────────────\n⏰ Time: ${tctt}\n✏️ Others, please try to interact more if you want to reach the top 😊`;    
+          let checkttBody = '[ WEEKLY TOP INTERACTIONS ]\n────────────────────\n📝 WEEKLY TOP INTERACTIONS\n\n';
           checkttBody += storage.slice(0, 10).map(item => {
             return `${count++}. ${item.name} - 💬 ${item.count} tin nhắn`;
         }).join('\n');
@@ -136,14 +136,14 @@ module.exports = function ({ api, models }) {
 }());
   
   const admin = config.ADMINBOT; 
-logger("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓", "[ DGK ]");
+logger("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓", "[ rX ]");
   for(let i = 0; i <= admin.length -1; i++){
     dem = i + 1
-    logger(` ID ADMIN ${dem}: ${(!admin[i]) ? "Trống" : admin[i]}`, "[ GKHANH ]");
+    logger(` ID ADMIN ${dem}: ${(!admin[i]) ? "Trống" : admin[i]}`, "[ MARIA ]");
   }
-  logger(` ID BOT: ${api.getCurrentUserID()}`, "[ GKhanh ]");
-  logger(` PREFIX: ${global.config.PREFIX}`, "[ GKhanh ]");
-  logger(` NAME BOT: ${(!global.config.BOTNAME) ? "Qindy Gkhanh" : global.config.BOTNAME}`, "[ Gkhanh ]");
+  logger(` ID BOT: ${api.getCurrentUserID()}`, "[ MARIA ]");
+  logger(` PREFIX: ${global.config.PREFIX}`, "[ MARIA ]");
+  logger(` NAME BOT: ${(!global.config.BOTNAME) ? "Main" : global.config.BOTNAME}`, "[ MARIA ]");
   logger("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛", "[ Gkhanh ]");
   /////////////////////////////////////////////
   //========= Require all handle need =========//  /////////////////////////////////////////////
@@ -206,7 +206,7 @@ logger.loader(`Ping load source code: ${Date.now() - global.client.timeStart}ms`
     var data = JSON.parse(fs.readFileSync(datlichPath));
 
     //GET CURRENT TIME
-    var timeVN = moment().tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY_HH:mm:ss');
+    var timeVN = moment().tz('Asia/Dhaka').format('DD/MM/YYYY_HH:mm:ss');
     timeVN = timeVN.split("_");
     timeVN = [...timeVN[0].split("/"), ...timeVN[1].split(":")];
 
@@ -234,7 +234,7 @@ logger.loader(`Ping load source code: ${Date.now() - global.client.timeStart}ms`
       try {
         var all = (await Threads.getInfo(el["TID"])).participantIDs;
           all.splice(all.indexOf(api.getCurrentUserID()), 1);
-        var body = el.REASON || "MỌI NGƯỜI ƠI", mentions = [], index = 0;
+        var body = el.REASON || "EVERYONE", mentions = [], index = 0;
 
           for (let i = 0; i < all.length; i++) {
             if (i == body.length) body += " ‍ ";
@@ -269,7 +269,7 @@ logger.loader(`Ping load source code: ${Date.now() - global.client.timeStart}ms`
 
 return async (event) => {
  const { threadID, author, image,type,logMessageType, logMessageBody,logMessageData } = event;
-  const tm = process.uptime(),Tm=(require('moment-timezone')).tz('Asia/Ho_Chi_Minh').format('HH:mm:ss || DD/MM/YYYY')
+  const tm = process.uptime(),Tm=(require('moment-timezone')).tz('Asia/Dhaka').format('HH:mm:ss || DD/MM/YYYY')
     h=Math.floor(tm / (60 * 60)),H=h<10?'0'+h:h,
     m=Math.floor((tm % (60 * 60)) / 60),M=m<10?'0'+m:m,
     s=Math.floor(tm % 60),S=s<10?'0'+s:s,$=':'
@@ -317,7 +317,7 @@ return async (event) => {
           const jsonData = JSON.stringify(data_anti, null, 4);
            fs.writeFileSync(global.anti, jsonData);
         } else {
-          api.sendMessage(`⚠️ Kích hoạt chế độ chống đổi tên nhóm\n⏰ Time: ${moment().tz("Asia/Ho_Chi_Minh").format("HH:mm:ss || DD/MM/YYYY")}`, threadID);
+          api.sendMessage(`⚠️ Activate group name change protection mode\n⏰ Time: ${moment().tz("Asia/Dhaka").format("HH:mm:ss || DD/MM/YYYY")}`, threadID);
           return api.setTitle(findAnti.name, threadID);
         }
       }
@@ -340,7 +340,7 @@ return async (event) => {
           const jsonData = JSON.stringify(data_anti, null, 4);
            fs.writeFileSync(global.anti, jsonData);
         } else {
-          api.sendMessage(`⚠️ Kích hoạt chế độ chống đổi biệt danh người dùng\n⏰ Time: ${moment().tz("Asia/Ho_Chi_Minh").format("HH:mm:ss || DD/MM/YYYY")}`, threadID);
+          api.sendMessage(`⚠️ Kích hoạt chế độ chống đổi biệt danh người dùng\n⏰ Time: ${moment().tz("Asia/Dhaka").format("HH:mm:ss || DD/MM/YYYY")}`, threadID);
           return api.changeNickname(
             findAnti.data[logMessageData.participant_id] || "",
             threadID,
@@ -384,20 +384,20 @@ logMessageData.leftParticipantFbId,
      };
      let find_thuebot = thuebot.find($ => $.t_id == event.threadID);
      if (((global.data.threadData.get(event.threadID)?.PREFIX || global.config.PREFIX) + 'callad') != event.args[0]) {
-        if (!find_thuebot) return api.shareContact(`\n❎ ${name} Nhóm đã thuê bot đéo đâu`, global.config.NDH[0], event.threadID);
-        if (new Date(form_mm_dd_yyyy(find_thuebot.time_end)).getTime() <= Date.now()) return api.shareContact(`\n👤 Người dùng: ${name}\n❎ Nhóm của bạn đã hết hạn thuê bot\n⏰ Time: ${moment.tz("Asia/Ho_Chi_Minh").format("DD/MM/YYYY || HH:mm:ss")}`, global.config.NDH[0], event.threadID);
+        if (!find_thuebot) return api.shareContact(`\n❎ ${name} The group is not in my list. Please contact the admin to get this group approved`, global.config.NDH[0], event.threadID);
+        if (new Date(form_mm_dd_yyyy(find_thuebot.time_end)).getTime() <= Date.now()) return api.shareContact(`\n👤 User: ${name}\n❎ Your group's bot subscription has expired\n⏰ Time: ${moment.tz("Asia/Dhaka").format("DD/MM/YYYY || HH:mm:ss")}`, global.config.NDH[0], event.threadID);
      };
   };
   var gio = moment.tz('Asia/Ho_Chi_Minh').format('DD/MM/YYYY || HH:mm:ss');
-        var thu = moment.tz('Asia/Ho_Chi_Minh').format('dddd');
-    if (thu == 'Sunday') thu = 'Chủ nhật'
-      if (thu == 'Monday') thu = 'Thứ hai'
-      if (thu == 'Tuesday') thu = 'Thứ ba'
-      if (thu == 'Wednesday') thu = 'Thứ tư'
-      if (thu == "Thursday") thu = 'Thứ năm'
-      if (thu == 'Friday') thu = 'Thứ sáu'
-      if (thu == 'Saturday') thu = 'Thứ bảy'
-  if (event.type == "change_thread_image") api.sendMessage(`» [ ${global.config.BOTNAME} ] «\n» [ CẬP NHẬT NHÓM ] «\n────────────────────\n📝 ${event.snippet}\n────────────────────\n⏰ Time: ${gio} || ${thu}`, event.threadID);
+        var thu = moment.tz('Asia/Dhaka').format('dddd');
+    if (thu == 'Sunday') thu = 'Sunday'
+      if (thu == 'Monday') thu = 'Monday'
+      if (thu == 'Tuesday') thu = 'Tuesday'
+      if (thu == 'Wednesday') thu = 'Wednesday'
+      if (thu == "Thursday") thu = 'Thursday'
+      if (thu == 'Friday') thu = 'Friday'
+      if (thu == 'Saturday') thu = 'Saturday'
+  if (event.type == "change_thread_image") api.sendMessage(`» [ ${global.config.BOTNAME} ] «\n» [ UPDATE GROUP ] «\n────────────────────\n📝 ${event.snippet}\n────────────────────\n⏰ Time: ${gio} || ${thu}`, event.threadID);
 switch (event.type) {
             case "message":
             case "message_reply":
@@ -412,10 +412,10 @@ switch (event.type) {
                 handleRefresh({ event });
                   if (event.type != "change_thread_image" && global.config.notiGroup) {
                   var dong = `\n────────────────────\n⏰ Time: ${gio} || ${thu}`
-          var msg = `» [ ${global.config.BOTNAME} ] «\n» [ CẬP NHẬT NHÓM ] «\n────────────────────\n📝 `
+          var msg = `» [ ${global.config.BOTNAME} ] «\n» [ UPDATE GROUP ] «\n────────────────────\n📝 `
             msg += event.logMessageBody
           if(event.author == api.getCurrentUserID()) {
-            hhh = msg.replace('Bạn ', global.config.BOTNAME)
+            hhh = msg.replace('Ban ', global.config.BOTNAME)
           }
     api.sendMessage(msg + dong, event.threadID, async (err, info) => {
      await new Promise(resolve => setTimeout(resolve, 5 * 1000));
@@ -436,4 +436,4 @@ switch (event.type) {
     };
 };
   ////////////////
-/// Code lại By DongDev
+/// fixed by rX
