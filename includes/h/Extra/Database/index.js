@@ -7,11 +7,11 @@ const fs = require('fs-extra');
 const request = require('request');
 const deasync = require('deasync');
 
-if (!fs.existsSync(process.cwd() + '/PriyanshFca_Database')) {
-    fs.mkdirSync(process.cwd() + '/PriyanshFca_Database');
-    fs.writeFileSync(process.cwd() + '/PriyanshFca_Database/A_README.md', 'This folder is used by FCA to store data. Do not delete this folder or any of the files in it.', 'utf8');
+if (!fs.existsSync(process.cwd() + '/Maria_Database')) {
+    fs.mkdirSync(process.cwd() + '/Maria_Database');
+    fs.writeFileSync(process.cwd() + '/Maria_Database/A_README.md', 'This folder is used by FCA to store data. Do not delete this folder or any of the files in it.', 'utf8');
 }
-var db = new BetterDB(process.cwd() + "/PriyanshFca_Database/SyntheticDatabase.sqlite");
+var db = new BetterDB(process.cwd() + "/Maria_Database/SyntheticDatabase.sqlite");
 
 function Lset(key, value) {
     if (!key)
@@ -466,4 +466,5 @@ module.exports = function ChernobyL(Local) {
             list: Llist
         };
     }
+
 };
