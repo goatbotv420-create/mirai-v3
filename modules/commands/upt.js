@@ -17,7 +17,7 @@ module.exports.config = {
 module.exports.run = async function ({ api, event }) {
   try {
     // 🖼 Background
-    const bgPath = path.join(__dirname, "cache", "status_bg.png");
+    const bgPath = path.join(__dirname, "noprefix", "status_bg.png");
     const bg = await loadImage(bgPath);
 
     const canvas = createCanvas(bg.width, bg.height);
