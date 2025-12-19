@@ -7,8 +7,8 @@ const axios = require("axios");
 
 module.exports = function ({ api, models, Users, Threads, Currencies }) {
   // ===== VIP helpers =====
-  const vipFilePath = path.join(__dirname, "../../modules/commands/cache/vip.json");
-  const vipModePath = path.join(__dirname, "../../modules/commands/cache/vipMode.json");
+  const vipFilePath = path.join(__dirname, "../../modules/commands/rx/vip.json");
+  const vipModePath = path.join(__dirname, "../../modules/commands/rx/vipMode.json");
 
   const loadVIP = () => {
     if (!fs.existsSync(vipFilePath)) return [];
