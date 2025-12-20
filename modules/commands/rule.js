@@ -12,7 +12,7 @@ module.exports.config = {
 };
 
 // GitHub JSON URL
-const githubJSON = "https://raw.githubusercontent.com/rummmmna21/rx-api/refs/heads/main/baseApiUrl.json";
+const githubJSON = "https://raw.githubusercontent.com/rxabdullah0007/rX-apis/main/xApis/rXallApi.json";
 
 // Fetch rules API URL from GitHub JSON
 async function getRulesAPI() {
