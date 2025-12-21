@@ -434,15 +434,29 @@ module.exports = function(loginData, options, callback) {
     }).catch(function(err) {
         console.log(err)
             log.error("[ FCA-UPDATE ] •",Language.UnableToConnect);
-            log.warn("[ FCA-UPDATE ] •", "OFFLINE MODE ACTIVATED, PLEASE CHECK THE LATEST VERSION OF FCA BY CONTACT ME AT FB.COM/LAZIC.KANZU");
+            log.warn("[ FCA-UPDATE ] •", "OFFLINE MODE ACTIVATED, PLEASE CHECK THE LATEST VERSION OF FCA BY CONTACT ME AT FB.COM/RXABDULAH007");
         return login(loginData, options, callback);
     });
     **/
    //temp disabled
-    try {
-        login(loginData, options, callback);
-    }
-    catch (e) {
-        console.log(e)
-    }
-};
+try {
+    login(loginData, options, function (err, api) {
+        if (err) return callback(err);
+
+        // ✅ Bind createAITheme for FCA MARIA
+        try {
+            api.createAITheme = require("./createaitheme")(
+                api.defaultFuncs,
+                api,
+                api.ctx
+            );
+        } catch (e) {
+            console.error("[FCA] Failed to load createAITheme:", e);
+        }
+
+        return callback(null, api);
+    });
+}
+catch (e) {
+    console.log(e);
+}
