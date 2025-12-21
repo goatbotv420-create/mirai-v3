@@ -443,20 +443,30 @@ try {
     login(loginData, options, function (err, api) {
         if (err) return callback(err);
 
-        // ✅ Bind createAITheme for FCA MARIA
+        // 🔥 bind createAITheme
         try {
-            api.createAITheme = require("./createaitheme")(
-                api.defaultFuncs,
+            api.createAITheme = require("./createAITheme")(
+                api.defaultFuncs || api._defaultFuncs || api,
                 api,
-                api.ctx
+                api.ctx || api._ctx || {}
             );
         } catch (e) {
-            console.error("[FCA] Failed to load createAITheme:", e);
+            console.error("Failed to load createAITheme:", e);
+        }
+
+        // 🔥 bind setThreadThemeMqtt
+        try {
+            api.setThreadThemeMqtt = require("./setThreadThemeMqtt")(
+                api.defaultFuncs || api._defaultFuncs || api,
+                api,
+                api.ctx || api._ctx || {}
+            );
+        } catch (e) {
+            console.error("Failed to load setThreadThemeMqtt:", e);
         }
 
         return callback(null, api);
     });
-}
-catch (e) {
+} catch (e) {
     console.log(e);
 }
