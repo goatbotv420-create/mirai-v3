@@ -13,17 +13,17 @@
     "autoRestart": 36000000,
     "UPTIME": 2446107.1632777182,
     "ACCESSTOKEN": "",
-    "FACEBOOK_ADMIN": "rxabdullah007",
+    "FACEBOOK_ADMIN": "",
     "ZALO_ADMIN": "",
-    "ADMIN_NAME": "rX",
-    "BOTNAME": "Sııƞƞeɽ v3 倫ッ",
-    "PREFIX": "!",
+    "ADMIN_NAME": "Tamim Bbz",
+    "BOTNAME": "তোমাগো লাং v3 倫",
+    "PREFIX": "/",
     "ADMINBOT": [
-        "100068565380737",
-        "61579782879961"
+        "100087466441450",
+        ""
     ],
     "NDH": [
-        "100068565380737"
+        "100087466441450"
     ],
     "DATABASE": {
         "sqlite": {
