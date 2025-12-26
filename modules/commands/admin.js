@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "admin",
 	version: "1.0.5",
 	hasPermssion: 0,
-	credits: "rX",
+	credits: "bbz",
 	description: "Enable or disable admin-only command mode",
 	commandCategory: "User",
 	usages: "Toggle admin / moderator only mode",
