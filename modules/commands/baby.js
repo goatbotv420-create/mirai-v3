@@ -15,7 +15,7 @@ module.exports.config = {
   name: "baby",
   version: "1.0.7",
   hasPermssion: 0,
-  credits: "rX",
+  credits: "rX edit by tamim bbz",
   description: "AI auto teach with Teach & List  support + Typing effect", //Better then all simsimi
   commandCategory: "chat",
   usages: "[query]",
@@ -34,7 +34,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
     if (args[0] === "autoteach") {
       const mode = args[1];
       if (!["on", "off"].includes(mode)) {
-        return api.sendMessage("✅ Use: baby autoteach on/off", event.threadID, event.messageID);
+        return api.sendMessage("✅ Use: baby autoteach on/off", event.threadID, event.messageID);     
       }
       const status = mode === "on";
       await axios.post(`${simsim}/setting`, { autoTeach: status });
@@ -44,7 +44,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
     if (args[0] === "list") {
       const res = await axios.get(`${simsim}/list`);
       return api.sendMessage(
-        `╭─╼🌟 𝐁𝐚𝐛𝐲 𝐀𝐈 𝐒𝐭𝐚𝐭𝐮𝐬\n├ 📝 𝐓𝐞𝐚𝐜𝐡𝐞𝐝 𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧𝐬: ${res.data.totalQuestions}\n├ 📦 𝐒𝐭𝐨𝐫𝐞𝐝 𝐑𝐞𝐩𝐥𝐢𝐞𝐬: ${res.data.totalReplies}\n╰─╼👤 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫: 𝐫𝐗 𝐀𝐛𝐝𝐮𝐥𝐥𝐚𝐡`,
+        `╭─╼🌟 𝐁𝐚𝐛𝐲 𝐀𝐈 𝐒𝐭𝐚𝐭𝐮𝐬\n├ 📝 𝐓𝐞𝐚𝐜𝐡𝐞𝐝 𝐐𝐮𝐞𝐬𝐭𝐢𝐨𝐧𝐬: ${res.data.totalQuestions}\n├ 📦 𝐒𝐭𝐨𝐫𝐞𝐝 𝐑𝐞𝐩𝐥𝐢𝐞𝐬: ${res.data.totalReplies}\n╰─╼👤 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫: 𝐓𝐚𝐦𝐢𝐦 𝐁𝐛𝐳`,
         event.threadID,
         event.messageID
       );
@@ -52,7 +52,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
 
     if (args[0] === "msg") {
       const trigger = args.slice(1).join(" ").trim();
-      if (!trigger) return api.sendMessage("❌ | Use: !baby msg [trigger]", event.threadID, event.messageID);
+      if (!trigger) return api.sendMessage("❌ | Use: /baby msg [trigger]", event.threadID, event.messageID);
 
       const res = await axios.get(`${simsim}/simsimi-list?ask=${encodeURIComponent(trigger)}`);
       if (!res.data.replies || res.data.replies.length === 0) {
@@ -152,7 +152,7 @@ module.exports.handleEvent = async function ({ api, event, Users }) {
   if (!text || !simsim) return;
 
   const senderName = await Users.getNameUser(event.senderID);
-  const triggers = ["baby", "bby", "xan", "bbz", "mari", "মারিয়া"];
+  const triggers = ["baby", "bby", "xan", "bbz", "shayma", "বেবি"];
 
   if (triggers.includes(text)) {
     const replies = [
@@ -168,8 +168,8 @@ module.exports.handleEvent = async function ({ api, event, Users }) {
       "──‎ 𝐇𝐮𝐌..? 👉👈",
       "আম গাছে আম নাই ঢিল কেন মারো, তোমার সাথে প্রেম নাই বেবি কেন ডাকো 😒🐸",
       "কি হলো, মিস টিস করচ্ছো নাকি 🤣",
-      "𝐓𝐫𝐮𝐬𝐭 𝐦𝐞 𝐢𝐚𝐦 𝐦𝐚𝐫𝐢𝐚 🧃",
-      "𝐇ᴇʏ 𝐗ᴀɴ 𝐈’ᴍ 𝐌ᴀ𝐫ɪ𝐚 𝐁ᴀ𝐛𝐲✨"
+      "𝐓𝐫𝐮𝐬𝐭 𝐦𝐞 𝐢𝐚𝐦 𝐒𝐡𝐚𝐲𝐦𝐚 🧃",
+      "𝐇ᴇʏ 𝐈’ᴍ 𝐒𝐡𝐚𝐲𝐦𝐚 𝐛𝐚𝐛𝐲✨"
     ];
     const reply = replies[Math.floor(Math.random() * replies.length)];
 
