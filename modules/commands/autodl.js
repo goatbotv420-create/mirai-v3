@@ -6,7 +6,7 @@ const { alldown } = require("rx-dawonload");
 module.exports.config = {
     name: "autodl",
     version: "2.1.1",
-    credits: "rX Abdullah",
+    credits: "rX | 𝗺𝗼𝗱𝗶𝗳𝘆 𝗯𝘆 𝗯𝗯𝘇",
     hasPermission: 0,
     description: "Auto detect any link and ask for download confirm",
     usePrefix: false,
@@ -64,7 +64,7 @@ module.exports.handleReaction = async function ({ api, event, handleReaction }) 
         if (reaction !== "❤") return;
 
         // Edit confirmation message to show downloading
-        api.editMessage(`⬇️ Downloading...`, handleReaction.messageID);
+        api.editMessage(`⬇️ 𝗗𝗼𝘄𝗻𝗹𝗼𝗱𝗶𝗻𝗴 𝗽𝗹𝘇 𝘄𝗮𝘁𝗲...`, handleReaction.messageID);
 
         const videoURL = handleReaction.url;
         const site = handleReaction.site;
@@ -72,7 +72,7 @@ module.exports.handleReaction = async function ({ api, event, handleReaction }) 
         // Download using alldown
         const data = await alldown(videoURL);
         if (!data || !data.url) {
-            api.sendMessage(`❌ Failed to fetch download link!`, event.threadID);
+            api.sendMessage(`❌ 𝗙𝗮𝗶𝗹𝗱𝗲 𝘁𝗼 𝗳𝗮𝘁𝗰𝗵 𝗱𝗼𝘄𝗻𝗹𝗼𝗮𝗿𝗱 𝗹𝗶𝗻𝗸!`, event.threadID);
             return;
         }
 
@@ -88,7 +88,7 @@ module.exports.handleReaction = async function ({ api, event, handleReaction }) 
         // Send downloaded file
         api.sendMessage(
             {
-                body: `🎀 Download Complete!\n📍 Platform: ${site}\n🎬 Title: ${title}`,
+                body: `🎀 𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗿𝗱 𝗖𝗼𝗺𝗽𝗹𝗶𝗰𝘁𝗲!\n📍 𝗣𝗹𝗮𝘁𝗳𝗿𝗼𝗺: ${site}\n🎬 𝗧𝗶𝘁𝗹𝗲: ${title}`,
                 attachment: fs.createReadStream(filePath)
             },
             event.threadID,
