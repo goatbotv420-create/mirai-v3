@@ -12,7 +12,7 @@ module.exports.config = {
     name: "animate",
     version: "1.0",
     hasPermssion: 0,
-    credits: "Neoaz ゐ / modify by rX",
+    credits: "Neoaz | 𝗺𝗼𝗱𝗶𝗳𝘆 𝗯𝘆 𝗯𝗯𝘇",
     description: "Generate animated video using AI prompt",
     commandCategory: "AI Tools",
     usages: "animate <prompt>",
@@ -34,7 +34,7 @@ module.exports.run = async ({ api, event, args }) => {
 
         if (!data.success || !data.video_urls || data.video_urls.length === 0) {
             api.setMessageReaction("❌", event.messageID, () => {}, true);
-            return api.sendMessage("⚠️ API kono video return kore nai!", event.threadID);
+            return api.sendMessage("⚠️ 𝗮𝗽𝗶 𝗸𝗼𝗻𝗼 𝗯𝗶𝗱𝗲𝗼 𝗿𝗲𝘁𝘂𝗿𝗻 𝗸𝗼𝗿𝗲 𝗻𝗮𝗶!", event.threadID);
         }
 
         const videoUrl = data.video_urls[0];
@@ -50,14 +50,14 @@ module.exports.run = async ({ api, event, args }) => {
         api.setMessageReaction("✅", event.messageID, () => {}, true);
 
         return api.sendMessage({
-            body: `🎬 AI Video Generated!\n📝 Prompt: ${prompt}`,
+            body: `🎬 𝗔𝗜 𝗩𝗶𝗱𝗶𝗲𝗼 𝗴𝗲𝗻𝗮𝗿𝗲𝘁𝗶𝗻𝗴!\n📝 𝗣𝗿𝗼𝗺𝗼𝘁: ${prompt}`,
             attachment: fs.createReadStream(filePath)
         }, event.threadID, () => {
             if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
         });
 
     } catch (err) {
-        api.sendMessage("❌ Failed to generate video!\nServer busy or error.", event.threadID);
+        api.sendMessage("❌ 𝗙𝗮𝗶𝗹𝗱 𝘁𝗼 𝗴𝗲𝗻𝗲𝗿𝗮𝘁𝗲 𝗮𝗶 𝘃𝗶𝗱𝗲𝗼!\n𝗦𝗲𝗿𝘃𝗲𝗿 𝗯𝘂𝘀𝘆 𝗼𝗿 𝗲𝗿𝗿𝗼𝗿.", event.threadID);
         console.log(err);
     }
 };
