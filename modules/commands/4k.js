@@ -5,7 +5,7 @@ const path = require('path');
 module.exports.config = {
     name: "4k",
     version: "1.0",
-    credits: "rX Abdullah",
+    credits: "rX | 𝗺𝗼𝗱𝗶𝗳𝘆 𝗯𝘆 𝗯𝗯𝘇",
     description: "Upscale image to 4K using API",
     usages: "!4k (reply to a photo)",
     commandCategory: "AI",
@@ -29,7 +29,7 @@ module.exports.run = async function ({ api, event, args }) {
     const imageUrl = extractImageUrl(event);
 
     if (!imageUrl)
-        return api.sendMessage("❌ Please reply to an image.", event.threadID, event.messageID);
+        return api.sendMessage("❌ 𝗣𝗹𝗲𝗮𝘀𝗲 𝗿𝗲𝗽𝗹𝗮𝘆 𝘁𝗼 𝗮𝗻 𝗶𝗺𝗮𝗴𝗲", event.threadID, event.messageID);
 
     api.setMessageReaction("⏳", event.messageID, () => {}, true);
 
@@ -65,7 +65,7 @@ module.exports.run = async function ({ api, event, args }) {
 
         return api.sendMessage(
             {
-                body: `> 🎀 𝐃𝐨𝐧𝐞 𝐛𝐚𝐛𝐲`,
+                body: `> 🎀 𝗗𝗼𝗻𝗲 𝗕𝗮𝗯𝘆 🙈`,
                 attachment: fs.createReadStream(tempFile)
             },
             event.threadID,
